@@ -1,0 +1,11 @@
+# ninja log v5
+20	1942	8001366363047025	MovieManager_autogen/timestamp	5710b6e1cc93c1be
+20	1942	8001366363047025	MovieManager_autogen/mocs_compilation.cpp	5710b6e1cc93c1be
+20	1942	8001366363047025	C:/Users/fotev/Elevate/MovieManager/build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/MovieManager_autogen/timestamp	5710b6e1cc93c1be
+20	1942	8001366363047025	C:/Users/fotev/Elevate/MovieManager/build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/MovieManager_autogen/mocs_compilation.cpp	5710b6e1cc93c1be
+1993	3616	8001366380848149	CMakeFiles/MovieManager.dir/src/utils.cpp.obj	a6e6a17d72633d51
+1979	3617	8001366380888398	CMakeFiles/MovieManager.dir/src/movieCollection.cpp.obj	74b4289a9f115e1e
+1949	6165	8001366406332189	CMakeFiles/MovieManager.dir/MovieManager_autogen/mocs_compilation.cpp.obj	16dd70f1d3cfe8d3
+1959	6469	8001366409352162	CMakeFiles/MovieManager.dir/src/main.cpp.obj	256188d38a45111a
+1965	7162	8001366416332942	CMakeFiles/MovieManager.dir/src/mainWindow.cpp.obj	f687a752917398e0
+7163	8644	8001366429868382	MovieManager.exe	d2c07bec1c15650d

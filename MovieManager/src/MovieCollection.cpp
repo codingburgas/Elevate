@@ -1,5 +1,5 @@
-#include "MovieCollection.h"
-#include "Utils.h"
+#include "../include/movieCollection.h"
+#include "../include/utils.h"
 
 #include <iostream>
 #include <algorithm>

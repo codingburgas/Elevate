@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "Movie.h"
+#include "movie.h"
 
 // ─────────────────────────────────────────
 //  Помощни функции (форматиране, I/O)

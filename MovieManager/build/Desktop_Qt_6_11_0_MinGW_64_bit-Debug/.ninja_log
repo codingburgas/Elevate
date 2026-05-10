@@ -1,0 +1,16 @@
+# ninja log v5
+54	392	8001352695992612	MovieManager_autogen/timestamp	ba21517f46e16993
+54	392	8001352695992612	MovieManager_autogen/mocs_compilation.cpp	ba21517f46e16993
+404	527	8001353532029520	CMakeFiles/MovieManager.dir/MovieManager_autogen/mocs_compilation.cpp.obj	fe7e3dec1e1f01f2
+54	392	8001352695992612	C:/Users/fotev/Elevate/MovieManager/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/MovieManager_autogen/timestamp	ba21517f46e16993
+54	392	8001352695992612	C:/Users/fotev/Elevate/MovieManager/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/MovieManager_autogen/mocs_compilation.cpp	ba21517f46e16993
+413	4901	8001353575755611	CMakeFiles/MovieManager.dir/src/main.cpp.obj	d75ebee4f2fbd718
+438	1399	8001353540749380	CMakeFiles/MovieManager.dir/src/utils.cpp.obj	fbfb2f1bb83928a6
+429	1637	8001353543077828	CMakeFiles/MovieManager.dir/src/movieCollection.cpp.obj	cd28769124fa9fba
+420	5133	8001353577926526	CMakeFiles/MovieManager.dir/src/mainWindow.cpp.obj	b6b1f83938181625
+42	972	8001355698965104	MovieManager_autogen/timestamp	ba21517f46e16993
+42	972	8001355698965104	MovieManager_autogen/mocs_compilation.cpp	ba21517f46e16993
+42	972	8001355698965104	C:/Users/fotev/Elevate/MovieManager/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/MovieManager_autogen/timestamp	ba21517f46e16993
+42	972	8001355698965104	C:/Users/fotev/Elevate/MovieManager/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/MovieManager_autogen/mocs_compilation.cpp	ba21517f46e16993
+973	3265	8001355722733581	CMakeFiles/MovieManager.dir/MovieManager_autogen/mocs_compilation.cpp.obj	fe7e3dec1e1f01f2
+3265	3600	8001355726053988	MovieManager.exe	a5b6eee9c35ebced

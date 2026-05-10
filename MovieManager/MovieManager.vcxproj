@@ -103,8 +103,8 @@
   <!-- Source files -->
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\MovieCollection.cpp" />
-    <ClCompile Include="src\Utils.cpp" />
+    <ClCompile Include="src\movieCollection.cpp" />
+    <ClCompile Include="src\utils.cpp" />
   </ItemGroup>
 
   <!-- Header files -->

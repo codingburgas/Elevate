@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <string>
-#include "Movie.h"
+#include "movie.h"
 
 // ─────────────────────────────────────────
 //  Enum за полето на сортиране
