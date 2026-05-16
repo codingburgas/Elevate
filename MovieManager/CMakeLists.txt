@@ -22,9 +22,31 @@ find_package(Qt6 COMPONENTS Widgets REQUIRED)
 add_executable(MovieManager
     src/main.cpp
     src/mainWindow.cpp
+    src/homeWindow.cpp
     src/movieCollection.cpp
     src/utils.cpp
     include/mainWindow.h
+    include/homeWindow.h
+    include/movie.h
+    include/movieCollection.h
+    include/utils.h
+)
+
+qt_add_resources(MovieManager "posters"
+    PREFIX "/"
+    FILES
+        posters/matrix.jpg
+        posters/inception.jpg
+        posters/interstellar.jpg
+        posters/godfather.jpg
+        posters/pulp_fiction.jpg
+        posters/dark_knight.jpg
+        posters/parasite.jpg
+        posters/spirited_away.jpg
+        posters/oppenheimer.jpg
+        posters/dune2.jpg
+        posters/blade_runner.jpg
+        posters/get_out.jpg
 )
 
 target_include_directories(MovieManager PRIVATE include)

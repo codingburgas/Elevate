@@ -1,20 +1,9 @@
-#ifndef NOMINMAX
-#define NOMINMAX
-#endif
-
-#define WIN32_LEAN_AND_MEAN
-#ifdef _WIN32
-#include <windows.h>
-#endif
-
+#include "homeWindow.h"
 #include <QApplication>
-#include "../include/mainWindow.h"
 
 int main(int argc, char* argv[]) {
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.resize(980, 720);
-    w.setWindowTitle("Movie Collection Manager");
+    QApplication app(argc, argv);
+    HomeWindow w;
     w.show();
-    return a.exec();
+    return app.exec();
 }

@@ -1,0 +1,17 @@
+<RCC>
+  <qresource prefix="/">
+    <file alias="posters/matrix.jpg">C:/Users/fotev/Elevate/MovieManager/posters/matrix.jpg</file>
+    <file alias="posters/inception.jpg">C:/Users/fotev/Elevate/MovieManager/posters/inception.jpg</file>
+    <file alias="posters/interstellar.jpg">C:/Users/fotev/Elevate/MovieManager/posters/interstellar.jpg</file>
+    <file alias="posters/godfather.jpg">C:/Users/fotev/Elevate/MovieManager/posters/godfather.jpg</file>
+    <file alias="posters/pulp_fiction.jpg">C:/Users/fotev/Elevate/MovieManager/posters/pulp_fiction.jpg</file>
+    <file alias="posters/dark_knight.jpg">C:/Users/fotev/Elevate/MovieManager/posters/dark_knight.jpg</file>
+    <file alias="posters/parasite.jpg">C:/Users/fotev/Elevate/MovieManager/posters/parasite.jpg</file>
+    <file alias="posters/spirited_away.jpg">C:/Users/fotev/Elevate/MovieManager/posters/spirited_away.jpg</file>
+    <file alias="posters/oppenheimer.jpg">C:/Users/fotev/Elevate/MovieManager/posters/oppenheimer.jpg</file>
+    <file alias="posters/dune2.jpg">C:/Users/fotev/Elevate/MovieManager/posters/dune2.jpg</file>
+    <file alias="posters/blade_runner.jpg">C:/Users/fotev/Elevate/MovieManager/posters/blade_runner.jpg</file>
+    <file alias="posters/get_out.jpg">C:/Users/fotev/Elevate/MovieManager/posters/get_out.jpg</file>
+  </qresource>
+</RCC>
+

@@ -1,9 +1,13 @@
+// ============================================================
+//  mainWindow.h  –  Movie Collection Manager
+//  Qt 6 Widgets  |  Code-snippet panel REMOVED
+// ============================================================
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
 #include <vector>
-#include "movie.h"          // ← your existing struct
+#include "movie.h"
 #include "movieCollection.h"
 #include "utils.h"
 
@@ -11,7 +15,6 @@ class QLineEdit;
 class QPushButton;
 class QTableWidget;
 class QLabel;
-class QTextEdit;
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -28,16 +31,15 @@ private slots:
 private:
     void setupUi();
     void populateTable();
-    void populateTable(const std::vector<Movie>& list); // overload for search results
+    void populateTable(const std::vector<Movie>& list);
 
     QLineEdit* searchEdit;
     QPushButton* searchBtn;
     QTableWidget* table;
     QPushButton* calcButton;
     QLabel* resultLabel;
-    QTextEdit* codeBlock;
+    // QTextEdit* codeBlock  ← removed
 
-    // ← your existing data, NOT a Qt-internal Movie struct
     std::vector<Movie> movies;
     int nextId = 1;
 };

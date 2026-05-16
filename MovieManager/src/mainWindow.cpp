@@ -1,5 +1,10 @@
+// ============================================================
+//  mainWindow.cpp  –  Movie Collection Manager
+//  Qt 6 Widgets  |  Code-snippet panel REMOVED
+// ============================================================
 #include "../include/mainWindow.h"
 
+#include <algorithm>
 #include <QLineEdit>
 #include <QPushButton>
 #include <QTableWidget>
@@ -8,7 +13,6 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QLabel>
-#include <QTextEdit>
 #include <QFont>
 #include <QTableWidgetItem>
 #include <QApplication>
@@ -21,7 +25,6 @@
 #include <QSpinBox>
 
 MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
-    // Seed with your existing default movies
     movies = {
         {nextId++, "The Matrix",      1999, 8.7, 136, "Sci-Fi"   },
         {nextId++, "Inception",       2010, 8.8, 148, "Sci-Fi"   },
@@ -44,7 +47,7 @@ void MainWindow::setupUi() {
 
     const QString darkStyle = R"(
         QWidget { background: #121315; color: #cfcfcf; font-family: "Segoe UI"; }
-        QLineEdit, QTableWidget, QTextEdit { background: #191a1b; border: 1px solid #2b2c2d; }
+        QLineEdit, QTableWidget { background: #191a1b; border: 1px solid #2b2c2d; }
         QHeaderView::section { background: #1e1f20; color: #cfcfcf; border: 1px solid #2b2c2d; }
         QPushButton#primary { background: #2bd66b; color: #031005; border-radius: 6px; padding: 10px; font-weight: bold; }
         QPushButton#danger  { background: #d63b3b; color: #ffffff;  border-radius: 6px; padding: 10px; font-weight: bold; }
@@ -56,13 +59,14 @@ void MainWindow::setupUi() {
     QVBoxLayout* mainLay = new QVBoxLayout;
     central->setLayout(mainLay);
 
+    // ── Title ────────────────────────────────────────────────
     QLabel* titleLabel = new QLabel("Movie Collection Manager (C++ / Qt)");
     QFont tf = titleLabel->font(); tf.setPointSize(18); tf.setBold(true);
     titleLabel->setFont(tf);
     titleLabel->setAlignment(Qt::AlignCenter);
     mainLay->addWidget(titleLabel);
 
-    // --- Search bar ---
+    // ── Search bar ───────────────────────────────────────────
     QHBoxLayout* searchLay = new QHBoxLayout;
     searchEdit = new QLineEdit;
     searchEdit->setPlaceholderText("Search by title...");
@@ -74,7 +78,7 @@ void MainWindow::setupUi() {
     mainLay->addLayout(searchLay);
     connect(searchEdit, &QLineEdit::textChanged, this, &MainWindow::onSearchChanged);
 
-    // --- Toolbar buttons ---
+    // ── Toolbar ──────────────────────────────────────────────
     QHBoxLayout* toolLay = new QHBoxLayout;
     QPushButton* addBtn = new QPushButton("+ Add Movie");
     QPushButton* delBtn = new QPushButton("− Delete Selected");
@@ -91,10 +95,11 @@ void MainWindow::setupUi() {
     connect(delBtn, &QPushButton::clicked, this, &MainWindow::onDeleteMovie);
     connect(sortBtn, &QPushButton::clicked, this, &MainWindow::onSortMovies);
 
-    // --- Table ---
+    // ── Table ────────────────────────────────────────────────
     table = new QTableWidget;
     table->setColumnCount(7);
-    table->setHorizontalHeaderLabels({ "ID", "Title", "Year", "Rating", "Duration (min)", "Genre", "Select" });
+    table->setHorizontalHeaderLabels({ "ID", "Title", "Year", "Rating",
+                                       "Duration (min)", "Genre", "Select" });
     table->verticalHeader()->setVisible(false);
     table->setSelectionMode(QAbstractItemView::NoSelection);
     table->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -102,7 +107,7 @@ void MainWindow::setupUi() {
     table->setShowGrid(true);
     mainLay->addWidget(table, 1);
 
-    // --- Recursive duration panel ---
+    // ── Recursive duration panel ─────────────────────────────
     QLabel* panelTitle = new QLabel("Recursive Duration Calculation");
     QFont pf = panelTitle->font(); pf.setPointSize(12); pf.setBold(true);
     panelTitle->setFont(pf);
@@ -117,31 +122,10 @@ void MainWindow::setupUi() {
     resultLabel = new QLabel("Total Duration of (0) Selected Movies: 0 min.");
     mainLay->addWidget(resultLabel);
 
-    // --- Code snippet ---
-    codeBlock = new QTextEdit;
-    codeBlock->setReadOnly(true);
-    codeBlock->setFixedHeight(130);
-    codeBlock->setStyleSheet("QTextEdit { background:#0f1112; color:#cfead4; border-radius:6px; border:1px solid #232425; }");
-    QFont mono("Courier New"); mono.setPointSize(10);
-    codeBlock->setFont(mono);
-    codeBlock->setHtml(R"(
-<pre style="margin:6px;">
-<span style="color:#6ab0ff;">// Recursive total duration (MovieCollection.cpp)</span>
-<span style="color:#ffcb6b;">int</span> <b>recursiveTotalDuration</b>(
-    <span style="color:#c6b9fe;">const std::vector&lt;Movie&gt;&amp; movies</span>,
-    <span style="color:#c6b9fe;">const std::vector&lt;int&gt;&amp; selectedIds</span>,
-    <span style="color:#c6b9fe;">int index</span> = 0) {
-    <span style="color:#6ab0ff;">if (index &gt;= selectedIds.size()) return 0;</span>  <span style="color:#6ab0ff;">// base case</span>
-    <span style="color:#6ab0ff;">// find movie by id, add duration, recurse</span>
-    <b>return</b> duration + recursiveTotalDuration(movies, selectedIds, index + 1);
-}</pre>)");
-    QHBoxLayout* bottomLay = new QHBoxLayout;
-    bottomLay->addStretch();
-    bottomLay->addWidget(codeBlock);
-    mainLay->addLayout(bottomLay);
+    // ── NOTE: codeBlock QTextEdit has been intentionally removed ──
 }
 
-// ── populateTable (full list) ──────────────────────────
+// ── populateTable ────────────────────────────────────────────
 void MainWindow::populateTable() {
     populateTable(movies);
 }
@@ -155,7 +139,6 @@ void MainWindow::populateTable(const std::vector<Movie>& list) {
         table->setItem(r, 1, new QTableWidgetItem(QString::fromStdString(m.title)));
         table->setItem(r, 2, new QTableWidgetItem(QString::number(m.year)));
 
-        // Green star rating using ratingStars() from Utils
         QString stars = QString::fromStdString(ratingStars(m.rating))
             + QString(" (%1)").arg(m.rating, 0, 'f', 1);
         QLabel* ratingLbl = new QLabel;
@@ -171,43 +154,50 @@ void MainWindow::populateTable(const std::vector<Movie>& list) {
         QCheckBox* chk = new QCheckBox;
         QWidget* chkWrap = new QWidget;
         QHBoxLayout* chkLay = new QHBoxLayout(chkWrap);
-        chkLay->addWidget(chk); chkLay->setAlignment(Qt::AlignCenter); chkLay->setContentsMargins(0, 0, 0, 0);
+        chkLay->addWidget(chk);
+        chkLay->setAlignment(Qt::AlignCenter);
+        chkLay->setContentsMargins(0, 0, 0, 0);
         table->setCellWidget(r, 6, chkWrap);
     }
     table->resizeRowsToContents();
 }
 
-// ── Search — calls searchByTitle() from MovieCollection ──
+// ── Search ────────────────────────────────────────────────────
 void MainWindow::onSearchChanged(const QString& text) {
     std::string q = text.toStdString();
     if (q.empty()) {
-        populateTable();    // restore full list
+        populateTable();
     }
     else {
-        auto results = searchByTitle(movies, q);   // ← your existing function
+        auto results = searchByTitle(movies, q);
         populateTable(results);
     }
 }
 
-// ── Add Movie — Qt dialog, then pushes into movies vector ──
+// ── Add Movie ─────────────────────────────────────────────────
 void MainWindow::onAddMovie() {
     QDialog dlg(this);
     dlg.setWindowTitle("Add Movie");
     QFormLayout form(&dlg);
 
     QLineEdit* titleEdit = new QLineEdit;
-    QSpinBox* yearSpin = new QSpinBox;  yearSpin->setRange(1888, 2100); yearSpin->setValue(2024);
-    QDoubleSpinBox* ratingSpin = new QDoubleSpinBox; ratingSpin->setRange(1.0, 10.0); ratingSpin->setSingleStep(0.1); ratingSpin->setValue(7.0);
-    QSpinBox* durSpin = new QSpinBox;  durSpin->setRange(1, 999); durSpin->setValue(120);
+    QSpinBox* yearSpin = new QSpinBox;
+    QDoubleSpinBox* ratingSpin = new QDoubleSpinBox;
+    QSpinBox* durSpin = new QSpinBox;
     QLineEdit* genreEdit = new QLineEdit;
+
+    yearSpin->setRange(1888, 2100);   yearSpin->setValue(2024);
+    ratingSpin->setRange(1.0, 10.0);  ratingSpin->setSingleStep(0.1); ratingSpin->setValue(7.0);
+    durSpin->setRange(1, 999);        durSpin->setValue(120);
 
     form.addRow("Title:", titleEdit);
     form.addRow("Year:", yearSpin);
     form.addRow("Rating:", ratingSpin);
-    form.addRow("Duration(min):", durSpin);
+    form.addRow("Duration (min):", durSpin);
     form.addRow("Genre:", genreEdit);
 
-    QDialogButtonBox* btns = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+    QDialogButtonBox* btns = new QDialogButtonBox(
+        QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
     form.addRow(btns);
     connect(btns, &QDialogButtonBox::accepted, &dlg, &QDialog::accept);
     connect(btns, &QDialogButtonBox::rejected, &dlg, &QDialog::reject);
@@ -220,15 +210,16 @@ void MainWindow::onAddMovie() {
         m.rating = ratingSpin->value();
         m.duration = durSpin->value();
         m.genre = genreEdit->text().toStdString();
-        movies.push_back(m);      // ← same as addMovie() but via GUI input
+        movies.push_back(m);
         populateTable();
     }
 }
 
-// ── Delete — uses deleteMovie() logic (find by ID) ──────
+// ── Delete Movie ──────────────────────────────────────────────
 void MainWindow::onDeleteMovie() {
     bool ok;
-    int id = QInputDialog::getInt(this, "Delete Movie", "Enter movie ID to delete:", 1, 1, 99999, 1, &ok);
+    int id = QInputDialog::getInt(this, "Delete Movie",
+        "Enter movie ID to delete:", 1, 1, 99999, 1, &ok);
     if (!ok) return;
 
     auto it = std::find_if(movies.begin(), movies.end(),
@@ -239,22 +230,24 @@ void MainWindow::onDeleteMovie() {
     }
     else {
         QString removed = QString::fromStdString(it->title);
-        movies.erase(it);    // ← same logic as deleteMovie()
+        movies.erase(it);
         populateTable();
         QMessageBox::information(this, "Deleted",
             QString("Removed: %1").arg(removed));
     }
 }
 
-// ── Sort — calls your existing sortMovies() ─────────────
+// ── Sort ──────────────────────────────────────────────────────
 void MainWindow::onSortMovies() {
     QStringList fields = { "Title", "Year", "Rating", "Duration" };
     bool ok;
-    QString chosen = QInputDialog::getItem(this, "Sort By", "Field:", fields, 0, false, &ok);
+    QString chosen = QInputDialog::getItem(this, "Sort By", "Field:",
+        fields, 0, false, &ok);
     if (!ok) return;
 
     QStringList dirs = { "Ascending", "Descending" };
-    QString dir = QInputDialog::getItem(this, "Direction", "Order:", dirs, 0, false, &ok);
+    QString dir = QInputDialog::getItem(this, "Direction", "Order:",
+        dirs, 0, false, &ok);
     if (!ok) return;
 
     SortField field = SortField::TITLE;
@@ -262,11 +255,11 @@ void MainWindow::onSortMovies() {
     if (chosen == "Rating")   field = SortField::RATING;
     if (chosen == "Duration") field = SortField::DURATION;
 
-    sortMovies(movies, field, dir == "Ascending");   // ← your existing function
+    sortMovies(movies, field, dir == "Ascending");
     populateTable();
 }
 
-// ── Calculate — calls recursiveTotalDuration() ──────────
+// ── Calculate recursive duration ─────────────────────────────
 void MainWindow::calculateTotal() {
     std::vector<int> selectedIds;
 
@@ -275,17 +268,17 @@ void MainWindow::calculateTotal() {
         if (!wrap) continue;
         QCheckBox* chk = wrap->findChild<QCheckBox*>();
         if (chk && chk->isChecked()) {
-            // get the ID from column 0
             int id = table->item(r, 0)->text().toInt();
             selectedIds.push_back(id);
         }
     }
 
-    // ← calls YOUR recursive function from MovieCollection.cpp
     int total = recursiveTotalDuration(movies, selectedIds);
     QString formatted = QString::fromStdString(formatDuration(total));
 
     resultLabel->setText(
         QString("Total Duration of (%1) Selected Movies: %2 min  (%3)")
-        .arg(selectedIds.size()).arg(total).arg(formatted));
+        .arg(selectedIds.size())
+        .arg(total)
+        .arg(formatted));
 }
