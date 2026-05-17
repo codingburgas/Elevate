@@ -1,1 +1,24 @@
+# Visual Studio
 .vs/
+x64/
+ARM64/
+obj/
+*.suo
+*.user
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+CMakeUserPresets.json
+cmake_install.cmake
+
+# Qt Auto-generated
+ui_*.h
+moc_*.cpp
+qrc_*.cpp
+
+# Build Outputs
+bin/
+Debug/
+Release/
+build/
