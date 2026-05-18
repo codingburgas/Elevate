@@ -25,11 +25,13 @@ add_executable(MovieManager
     src/homeWindow.cpp
     src/movieCollection.cpp
     src/utils.cpp
+    src/reviewDialog.cpp
     include/mainWindow.h
     include/homeWindow.h
     include/movie.h
     include/movieCollection.h
     include/utils.h
+    include/reviewDialog.h
 )
 
 qt_add_resources(MovieManager "posters"

@@ -17,6 +17,7 @@
 #include "movie.h"
 #include "movieCollection.h"
 #include "utils.h"
+#include "reviewDialog.h"   // ← review feature
 
 // ─────────────────────────────────────────────────────────────
 //  MovieCardWidget  –  individual poster card in the grid
@@ -58,7 +59,7 @@ private slots:
     // Wired to search bar
     void on_search_textChanged(const QString& text);
 
-    // Wired to each MovieCardWidget
+    // Wired to each MovieCardWidget – now opens ReviewDialog
     void on_movieCard_clicked(int movieId);
 
     // Sidebar navigation

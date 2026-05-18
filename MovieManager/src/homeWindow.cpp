@@ -3,6 +3,7 @@
 //  Qt 6 Widgets  |  Dark Theme  |  Cinema Gold accent
 // ============================================================
 #include "../include/homeWindow.h"
+#include "../include/reviewDialog.h"
 
 #include <map>
 #include <QApplication>
@@ -406,6 +407,29 @@ void MovieCardWidget::buildCard(const Movie& m) {
     m_metaLabel->setObjectName("cardMeta");
     textLay->addWidget(m_metaLabel);
 
+    // ── Personal review badge (only shown when reviewed) ──────
+    if (m.userRating > 0) {
+        QString stars;
+        for (int i = 1; i <= 5; ++i)
+            stars += (i <= m.userRating) ? "★" : "☆";
+
+        QWidget* badgeWrap = new QWidget;
+        QHBoxLayout* badgeLay = new QHBoxLayout(badgeWrap);
+        badgeLay->setContentsMargins(0, 2, 0, 0);
+        badgeLay->setSpacing(5);
+
+        QLabel* penIcon = new QLabel("✎");
+        penIcon->setStyleSheet("color: #FFD700; font-size: 10px;");
+
+        QLabel* starLbl = new QLabel(stars);
+        starLbl->setStyleSheet("color: #FFD700; font-size: 10px; letter-spacing: 1px;");
+
+        badgeLay->addWidget(penIcon);
+        badgeLay->addWidget(starLbl);
+        badgeLay->addStretch();
+        textLay->addWidget(badgeWrap);
+    }
+
     lay->addLayout(textLay);
     setLayout(lay);
 }
@@ -676,33 +700,18 @@ void HomeWindow::on_search_textChanged(const QString& text) {
     }
 }
 
-// ── Movie card clicked – show detail dialog ──────────────────
+// ── Movie card clicked – open Review dialog ──────────────────
 void HomeWindow::on_movieCard_clicked(int movieId) {
     auto it = std::find_if(m_movies.begin(), m_movies.end(),
         [movieId](const Movie& m) { return m.id == movieId; });
     if (it == m_movies.end()) return;
-    const Movie& m = *it;
 
-    int hrs = m.duration / 60;
-    int mins = m.duration % 60;
-    QString details =
-        QString("<b style='font-size:16px; color:#FFD700;'>%1</b><br><br>"
-            "<b>Year:</b> %2<br>"
-            "<b>Genre:</b> %3<br>"
-            "<b>IMDb Rating:</b> ★ %4 / 10<br>"
-            "<b>Duration:</b> %5h %6m<br>")
-        .arg(QString::fromStdString(m.title))
-        .arg(m.year)
-        .arg(QString::fromStdString(m.genre))
-        .arg(m.rating, 0, 'f', 1)
-        .arg(hrs).arg(mins, 2, 10, QChar('0'));
-
-    QMessageBox mb(this);
-    mb.setWindowTitle("Movie Details");
-    mb.setTextFormat(Qt::RichText);
-    mb.setText(details);
-    mb.setStandardButtons(QMessageBox::Ok);
-    mb.exec();
+    ReviewDialog dlg(*it, this);
+    if (dlg.exec() == QDialog::Accepted) {
+        // Refresh the grid so the review badge appears / updates
+        populateGrid(m_movies);
+        refreshStats();
+    }
 }
 
 // ── Sidebar navigation ────────────────────────────────────────

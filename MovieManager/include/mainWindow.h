@@ -10,6 +10,7 @@
 #include "movie.h"
 #include "movieCollection.h"
 #include "utils.h"
+#include "reviewDialog.h"
 
 class QLineEdit;
 class QPushButton;
@@ -27,6 +28,7 @@ private slots:
     void onAddMovie();
     void onDeleteMovie();
     void onSortMovies();
+    void onReviewMovie(int movieId);
 
 private:
     void setupUi();

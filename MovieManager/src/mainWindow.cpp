@@ -3,6 +3,7 @@
 //  Qt 6 Widgets  |  Code-snippet panel REMOVED
 // ============================================================
 #include "../include/mainWindow.h"
+#include "../include/reviewDialog.h"
 
 #include <algorithm>
 #include <QLineEdit>
@@ -97,9 +98,9 @@ void MainWindow::setupUi() {
 
     // ── Table ────────────────────────────────────────────────
     table = new QTableWidget;
-    table->setColumnCount(7);
+    table->setColumnCount(8);
     table->setHorizontalHeaderLabels({ "ID", "Title", "Year", "Rating",
-                                       "Duration (min)", "Genre", "Select" });
+                                       "Duration (min)", "Genre", "Select", "Review" });
     table->verticalHeader()->setVisible(false);
     table->setSelectionMode(QAbstractItemView::NoSelection);
     table->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -158,6 +159,25 @@ void MainWindow::populateTable(const std::vector<Movie>& list) {
         chkLay->setAlignment(Qt::AlignCenter);
         chkLay->setContentsMargins(0, 0, 0, 0);
         table->setCellWidget(r, 6, chkWrap);
+
+        // ── Review button (col 7) ─────────────────────────────
+        QString btnLabel = (m.userRating > 0)
+            ? QString("★ %1  Edit").arg(m.userRating)
+            : QString("✎  Review");
+        QPushButton* reviewBtn = new QPushButton(btnLabel);
+        reviewBtn->setObjectName(m.userRating > 0 ? "primary" : "icon");
+        reviewBtn->setFixedHeight(28);
+        reviewBtn->setStyleSheet(m.userRating > 0
+            ? "QPushButton { background:#2bd66b; color:#031005; border-radius:5px;"
+            " font-weight:bold; font-size:12px; padding:0 8px; }"
+            "QPushButton:hover { background:#3de880; }"
+            : "QPushButton { background:#2a2b2c; color:#cfcfcf; border:1px solid #3a3b3c;"
+            " border-radius:5px; font-size:12px; padding:0 8px; }"
+            "QPushButton:hover { background:#333435; color:#ffffff; }");
+        const int movieId = m.id;
+        connect(reviewBtn, &QPushButton::clicked, this,
+            [this, movieId]() { onReviewMovie(movieId); });
+        table->setCellWidget(r, 7, reviewBtn);
     }
     table->resizeRowsToContents();
 }
@@ -259,7 +279,18 @@ void MainWindow::onSortMovies() {
     populateTable();
 }
 
-// ── Calculate recursive duration ─────────────────────────────
+// ── Review Movie ──────────────────────────────────────────────
+void MainWindow::onReviewMovie(int movieId) {
+    auto it = std::find_if(movies.begin(), movies.end(),
+        [movieId](const Movie& m) { return m.id == movieId; });
+    if (it == movies.end()) return;
+
+    ReviewDialog dlg(*it, this);
+    if (dlg.exec() == QDialog::Accepted) {
+        // Refresh the table so the button label updates
+        populateTable();
+    }
+}
 void MainWindow::calculateTotal() {
     std::vector<int> selectedIds;
 

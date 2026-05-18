@@ -11,5 +11,9 @@ struct Movie {
     double      rating;
     int         duration;
     std::string genre;
-    std::string posterPath;  // ← add this
+    std::string posterPath;
+
+    // ── Personal review data ─────────────────────
+    int         userRating = 0;   // 0 = not reviewed, 1–5 personal stars
+    std::string review;           // free-text personal notes
 };
