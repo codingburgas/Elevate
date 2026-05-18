@@ -30,14 +30,15 @@ Elevate is a lightweight utility that takes your chaotic movie list and sorts it
  
 | Logo | Tool | Purpose |
 | :--: | :--- | :------ |
-| <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Visual_Studio_Icon_2022.svg/1200px-Visual_Studio_Icon_2022.svg.png%22 width="20"> | [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) | Primary IDE |
+| <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Visual_Studio_Icon_2022.svg/1200px-Visual_Studio_Icon_2022.svg.png" width="20"> | [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) | Primary IDE |
 | <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20"> | [GitHub](https://github.com/) | Version Control |
-| <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Microsoft_Office_Word_%282025%E2%80%93present%29.svg/960px-Microsoft_Office_Word_%282025%E2%80%93present%29.svg.png%22 width="20"> | [Microsoft Word](https://en.wikipedia.org/wiki/Microsoft_Word) | Documentation |
-| <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Microsoft_Office_PowerPoint_%282025%E2%80%93present%29.svg/960px-Microsoft_Office_PowerPoint_%282025%E2%80%93present%29.svg.png%22 width="20"> | [MS PowerPoint](https://bg.wikipedia.org/wiki/Microsoft_PowerPoint) | Presentations |
-| <img src="https://brandlogos.net/wp-content/uploads/2025/10/microsoft_teams_2025-logo_brandlogos.net_9ewvi-512x540.png%22 width="20"> | [MS Teams](https://www.microsoft.com/en-us/microsoft-teams/group-chat-software) | Communication |
+| <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Microsoft_Office_Word_%282025%E2%80%93present%29.svg/960px-Microsoft_Office_Word_%282025%E2%80%93present%29.svg.png" width="20"> | [Microsoft Word](https://en.wikipedia.org/wiki/Microsoft_Word) | Documentation |
+| <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Microsoft_Office_PowerPoint_%282025%E2%80%93present%29.svg/960px-Microsoft_Office_PowerPoint_%282025%E2%80%93present%29.svg.png" width="20"> | [MS PowerPoint](https://bg.wikipedia.org/wiki/Microsoft_PowerPoint) | Presentations |
+| <img src="https://brandlogos.net/wp-content/uploads/2025/10/microsoft_teams_2025-logo_brandlogos.net_9ewvi-512x540.png" width="20"> | [MS Teams](https://www.microsoft.com/en-us/microsoft-teams/group-chat-software) | Communication |
 | <img src="https://brandlogovector.com/wp-content/uploads/2022/02/Canva-Icon-Logo.png" width="20"> | [Canva](https://www.canva.com/) | Logo Design |
 | <img src="https://brandslogos.com/wp-content/uploads/thumbs/c-logo-vector.svg" width="20"> | [C++](https://cplusplus.com/) | Programming Language |
- 
+
+---
 ---
  
 <a id="contributors"></a>
@@ -56,8 +57,8 @@ Elevate is a lightweight utility that takes your chaotic movie list and sorts it
  
 | Document | Link |
 | :------- | :--- |
-| <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Microsoft_Office_Word_%282025%E2%80%93present%29.svg/960px-Microsoft_Office_Word_%282025%E2%80%93present%29.svg.png%22 width="18">  Word Document | [Elevate.docx](MovieManager/documentation/Elevate.docx) |
-| <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Microsoft_Office_PowerPoint_%282025%E2%80%93present%29.svg/960px-Microsoft_Office_PowerPoint_%282025%E2%80%93present%29.svg.png%22 width="18">  PowerPoint Presentation | [Elevate.pptx](MovieManager/documentation/Elevate.pptx) |
+| <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Microsoft_Office_Word_%282025%E2%80%93present%29.svg/960px-Microsoft_Office_Word_%282025%E2%80%93present%29.svg.png" width="18">  Word Document | [Elevate.docx](MovieManager/documentation/Elevate.docx) |
+| <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Microsoft_Office_PowerPoint_%282025%E2%80%93present%29.svg/960px-Microsoft_Office_PowerPoint_%282025%E2%80%93present%29.svg.png" width="18">  PowerPoint Presentation | [Elevate.pptx](MovieManager/documentation/Elevate.pptx) |
  
 ---
  
