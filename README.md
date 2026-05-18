@@ -30,7 +30,7 @@ Elevate is a lightweight utility that takes your chaotic movie list and sorts it
  
 | Logo | Tool | Purpose |
 | :--: | :--- | :------ |
-| <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Visual_Studio_Icon_2022.svg/1200px-Visual_Studio_Icon_2022.svg.png" width="20"> | [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) | Primary IDE |
+| <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Visual_Studio_Icon_2022.svg" width="20"> | [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) | Primary IDE |
 | <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20"> | [GitHub](https://github.com/) | Version Control |
 | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Microsoft_Office_Word_%282025%E2%80%93present%29.svg/960px-Microsoft_Office_Word_%282025%E2%80%93present%29.svg.png" width="20"> | [Microsoft Word](https://en.wikipedia.org/wiki/Microsoft_Word) | Documentation |
 | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Microsoft_Office_PowerPoint_%282025%E2%80%93present%29.svg/960px-Microsoft_Office_PowerPoint_%282025%E2%80%93present%29.svg.png" width="20"> | [MS PowerPoint](https://bg.wikipedia.org/wiki/Microsoft_PowerPoint) | Presentations |
